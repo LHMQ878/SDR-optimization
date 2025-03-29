@@ -38,11 +38,11 @@ class Config:
     # DeepSeek API 配置 
     API_URL = "https://api.siliconflow.cn/v1/chat/completions"
     API_KEYS = [
-        "sk-fiuiulyyxuutbvxokyqpboiitbjpohpfxxmwrfbhynwpcdfj",  # 主KEY
-        "sk-drsxypzgdhptprgtkprdyfihdcvmpxwcxalwdhmvdvacullk",  # 备用KEY1
-        "sk-gnsgxoazmujgptmlrdttovajtsotpuiemivelvenryghxlrk",  # 备用KEY2
-        "sk-qicoopotuposhfudroszcqybxxepjlkmlpqiezjoxjpnjlcc",  # 备用KEY3
-        "sk-ohlhuntbdwdocylzzzxifapjmehrboxwksljlkgaircvsiio"   # 备用KEY4
+        "sk-fiuiulyyxuutbvxokyqpboiitbjpohpfxxmwrfbhyxxxxxxx",  # 主KEY
+        "sk-drsxypzgdhptprgtkprdyfihdcvmpxwcxalwdhmvdxxxxxxx",  # 备用KEY1
+        "sk-gnsgxoazmujgptmlrdttovajtsotpuiemivelvenrxxxxxxx",  # 备用KEY2
+        "sk-qicoopotuposhfudroszcqybxxepjlkmlpqiezjoxxxxxxxx",  # 备用KEY3
+        "sk-ohlhuntbdwdocylzzzxifapjmehrboxwksljlkgaixxxxxxx"   # 备用KEY4
     ]
 
     # 监听配置
