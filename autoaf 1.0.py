@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------
-# wxauto本身不支持批量添加好友，需要对外部库子函数进行修改
-# 右键AddNewFriend后，Go to Definition
-# 在AddNewFriend函数中的self._show()下添加一行：self.SwitchToChat()，就可以实现批量添加了
+# wxauto itself does not support adding friends in batches, so you need to modify the external library subfunctions
+# After right clicking AddNewFriend, Go to Definition
+# Add a line under self._show() in the AddNewFriend function: self.SwitchToChat() to add in batches
 #-----------------------------------------------------------------------------------
 
 import pandas as pd
@@ -10,24 +10,24 @@ import time
 import random
 
 
-file_path = "待添加人员名单.xlsx"  # 替换为您的实际路径
+file_path = "List of people to be added.xlsx"  # Replace with your actual path
 df = pd.read_excel(file_path, engine='openpyxl')
 
-# 初始化微信
+# Initialize WeChat
 wx = WeChat()
 
 
-# 遍历每一行数据
+# Traverse each row of data
 for index, row in df.iterrows():
     try:
-        # 提取信息
+        # Extracting information
         phone = str(row['phone']).strip()
-        addmsg = "您好，xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"                       # 添加好友时发送的验证消息，需注意有字数限制
-        remark = str(row['remark']).strip() if pd.notna(row['remark']) else None  # 备注，可以在excel待添加名单中提前设置好
-        raw_tags = str(row['tag']).strip() if pd.notna(row['tag']) else ""        # 好友标签，可以在excel待添加名单中提前设置好
+        addmsg = "Hello，xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"                       # The verification message sent when adding a friend has a character limit.
+        remark = str(row['remark']).strip() if pd.notna(row['remark']) else None   # Note: You can set it in advance in the Excel list to be added
+        raw_tags = str(row['tag']).strip() if pd.notna(row['tag']) else ""         # Friend tags can be set in advance in the Excel list to be added
         tags = [tag.strip() for tag in raw_tags.split(",") if tag.strip()]
 
-        # 尝试添加好友
+        # Try adding friends
         start_time = time.time()
         success = wx.AddNewFriend(
             keywords=phone,
@@ -36,15 +36,15 @@ for index, row in df.iterrows():
             tags=tags
         )
 
-        # 根据返回值判断结果
+        # Determine the result based on the return value
         if success:
-            print(f"✅ 成功添加：{phone}")
+            print(f"✅ Successfully added:{phone}")
         else:
-            print(f"❌ 添加失败：{phone}（电话号信息有误，无法添加）")
+            print(f"❌ Add failed: {phone} (The phone number information is incorrect and cannot be added)")
         
-        # 避免频繁操作
+        # Avoid frequent operations
         time.sleep(5 + random.uniform(1, 5))  
 
     except Exception as e:
-        print(f"❌ 添加失败：{phone}，错误：{str(e)}")
+        print(f"❌ Failed to add: {phone}, error: {str(e)}")
         continue
