@@ -1,2 +1,2 @@
 # SDR-optimization
-In the context of the DeepSeek big model's popularity, SDR work requires robot tools to optimize the workflow. 
+Under the background of the explosion of deepseek big models, SDR work needs some robot tools to help optimize the workflow. This project includes three robots: 1. Automatically add WeChat friends; 2. Automatically retrieve the structured data of the big model writing table; 3. WeChat real-time monitoring + intelligent reply assistant. The content will share the entire structure of the code, but will hide some personal information.
